@@ -39,3 +39,52 @@ override fun onSaveInstanceState(outState: Bundle?) {
 
     super.onSaveInstanceState(outState)
 }
+
+
+// 액티비티가 RESUMED 상태로 바뀔 때 발행되는 ON_RESUME 이벤트를
+// LifeCycleObserver가 수신하게 될 때 수행할 수 있는 동작 중 하나
+
+
+// 액티비티가 RESUMED 상태가 될 때마다 카메라를 초기화하는 코드
+
+class CameraComponent: LifeCycleObserver {
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    fun initCamera() {
+        if (camera == null) {
+            getCamera()
+        }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    fun releaseCamera() {
+        camera?.release()
+        camera = null
+    }
+}
+
+// PAUSED 상태가 되면 다른 앱과 시스템 자원 공유를 위해 메모리에서 카메라를 해제한다.
+// 다시 액티비티가 RESUMED 되는 겨우 카메라가 메모리 상에 존재하지 않는다
+// 따라서, 다시 초기화 한다.
+
+
+// --- onStop()은 UI 관련 작업을 수행하기에 적절
+// CPU를 비교적 많이 소모하는 작업을 종료해야 한다 - DB 저장 타이밍을 모르겠다면 onStop() 상태일 때 저장
+
+override fun onStop() {
+    super.onStop()
+
+    val values = ContentValues().apply {
+        put(NotePad.Notes.COLUMN_NAME_NOTE, getCurrentNoteText())
+        put(NotePad.Notes.COLUMN_NAME_TITLE, getCurrentNoteTitle())
+    }
+
+    asyncQueryHandler.startUpdate(
+        token,
+        null,
+        uri,
+        values,
+        null,
+        null
+    )
+}
+
