@@ -2,34 +2,27 @@ package com.example.studyproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import sun.rmi.runtime.Log
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    val TAG = "MainActivity"    // 변하지 않는 값은 val로 선언언
+
+   override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var myName = "김아린"
+        Log.d(TAG, "my name = $myName")
+        myName = "아린"   // var는 선언한 뒤 값을 변경할 수 있다
+        Log.d(TAG, "my name = $myName")
+
+        val PI = 3.141592   // val은 선언한 뒤 값을 변경할 수 없다
+        // 변하지 않는 상수를 정의할 때 사용
+       Log.d(TAG, "pi= $PI")
     }
 }
 
 
 
 
-
-// 안드로이드 시스템은 메모리 이외 다른 곳에서 데이터를 가져오는 작업을
-// 백그라운드 스레드에서 처리하도록 권장한다
-
-// 백그라운드 스레드를 생성하는 방법
-
-
-// 1. Thread 객체를 통해 생성하는 경우
-
-class WorkerThread: Thread() {
-    override fun run() {
-        var i = 0
-        while (i < 10) {
-            i += 1
-            Log.i("WorkerThread", "$i")
-        }
-    }
-
-}
