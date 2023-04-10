@@ -8,35 +8,46 @@ class MainActivity : AppCompatActivity() {
 
     val TAG = "MainActivity"    // 변하지 않는 값은 val로 선언
 
-   override fun onCreate(savedInstanceState: Bundle?) {
-       super.onCreate(savedInstanceState)
-       setContentView(R.layout.activity_main)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-       var myName = "김아린"
-       Log.d(TAG, "my name = $myName")
-       myName = "아린"   // var는 선언한 뒤 값을 변경할 수 있다
-       Log.d(TAG, "my name = $myName")
+        var myName = "김아린"
+        Log.d(TAG, "my name = $myName")
+        myName = "아린"   // var는 선언한 뒤 값을 변경할 수 있다
+        Log.d(TAG, "my name = $myName")
 
-       val PI = 3.141592   // val은 선언한 뒤 값을 변경할 수 없다
-       // 변하지 않는 상수를 정의할 때 사용
-       Log.d(TAG, "pi= $PI")
+        val PI = 3.141592   // val은 선언한 뒤 값을 변경할 수 없다
+        // 변하지 않는 상수를 정의할 때 사용
+        Log.d(TAG, "pi= $PI")
 
 
-       var myNumber = "1,2,3,4,5,6"
-       var thisWeekNumbers = "5,6,7,8,9,10"
-       if (myNumber == thisWeekNumbers) {
-           Log.d(TAG, "당첨되었습니다")
-       } else {
-           Log.d(TAG, "당첨되지 않았습니다")
-       }
+        var myNumber = "1,2,3,4,5,6"
+        var thisWeekNumbers = "5,6,7,8,9,10"
+        if (myNumber == thisWeekNumbers) {
+            Log.d(TAG, "당첨되었습니다")
+        } else {
+            Log.d(TAG, "당첨되지 않았습니다")
+        }
 
-       for (index in 1..10) {    // 1..10 => 1부터 10까지 반복, 키워드를 변수명으로 쓰지 말기
-           Log.d(TAG, "현재 숫자는 ${index}입니다") // 문자열 표시에 $ 표시 쓸 때는 한 칸 띄어쓰기
-           // $ 표시를 띄어쓰지 않고 표기하려면 변수명에 {}
-       }
+        for (index in 1..10) {    // 1..10 => 1부터 10까지 반복, 키워드를 변수명으로 쓰지 말기
+            Log.d(TAG, "현재 숫자는 ${index}입니다") // 문자열 표시에 $ 표시 쓸 때는 한 칸 띄어쓰기
+            // $ 표시를 띄어쓰지 않고 표기하려면 변수명에 {}
+        }
 
-   }
+
+        var variable = "홍길동"    // 문자열이 들어온 것을 보고 String 변수임을 판단
+        // var variable: String = "김아린"  과 같음
+        // 타입을 붙여서 코딩하는 것을 권장
+
+        var variable2: String
+        variable2 = "김아린"
+
+        // 타입이 한 번 지정되면 타입을 변경할 수 없음, 같은 타입의 다른 값은 넣을 수 있다
+        variable = "안녕하세요"
+    }
 }
+
 
 
 
