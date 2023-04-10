@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         val PI = 3.141592   // val은 선언한 뒤 값을 변경할 수 없다
         // 변하지 않는 상수를 정의할 때 사용
+        // val 변수는 대문자로 정의하는 것이 개발자들의 약속
         Log.d(TAG, "pi= $PI")
 
 
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity() {
 
         // 타입이 한 번 지정되면 타입을 변경할 수 없음, 같은 타입의 다른 값은 넣을 수 있다
         variable = "안녕하세요"
+
+
+        var helloWorld = "안녕 세상아!"  // 카멜 표기법
+        var hello_world = "안녕 세상아!" // 스네이크 표기법
     }
 }
 
