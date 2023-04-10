@@ -50,6 +50,28 @@ class MainActivity : AppCompatActivity() {
 
         var helloWorld = "안녕 세상아!"  // 카멜 표기법
         var hello_world = "안녕 세상아!" // 스네이크 표기법
+
+
+        var first = 300
+        var second = 500
+        var third = 270
+
+        // 비교연산자 <, >, >=, <=, ==, !=
+        var result1 = first < 500
+        Log.d("compare", "첫 번째 결과 = ${result1}")
+        var result2 = second < 500
+        Log.d("compare", "두 번째 결과 = ${result2}")
+
+        // 논리연산자 : 비교연산자의 결과를 다시 한 번 연산
+        // && : AND 연산자
+        var logic1 = result1 && result2
+        Log.d("compare", "논리연산 && 결과 = ${logic1}")
+        // || : OR 연산자
+        var logic2 = result1 || result2
+        Log.d("compare", "논리연산 || 결과 = ${logic2}")
+        // 부정연산자 : 단항 연산자 !
+        var logic3 = !result1
+        Log.d("compare", "논리연산 ! 결과 = ${logic3}")
     }
 }
 
