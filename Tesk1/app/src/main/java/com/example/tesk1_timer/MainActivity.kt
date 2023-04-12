@@ -12,5 +12,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.btnStart.setOnClickListener {
+            if (binding.btnStart.text == "시작") {
+                binding.btnStart.text = "일시정지"
+            } else {
+                binding.btnStart.text = "시작"
+            }
+        }
     }
 }
