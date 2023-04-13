@@ -63,7 +63,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pause() {
+        binding.btnStart.text = "시작"
 
+        isRunning = false   // 멈춤 상태로 전환
+        timer?.cancel() // 타이머 멈추기
     }
 
     private fun refresh() {
