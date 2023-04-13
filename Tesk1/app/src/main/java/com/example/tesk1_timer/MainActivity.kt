@@ -7,7 +7,7 @@ import com.example.tesk1_timer.databinding.ActivityMainBinding
 import java.util.Timer
 import kotlin.concurrent.timer
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     var isRunning = false   // 실행 여부 확인용 변수
     var timer: Timer? = null
@@ -24,6 +24,21 @@ class MainActivity : AppCompatActivity() {
                 binding.btnStart.text = "일시정지"
             } else {
                 binding.btnStart.text = "시작"
+            }
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when(binding.root) {
+            binding.btnStart -> {
+                if (isRunning) {
+                    pause()
+                } else {
+                    start()
+                }
+            }
+            binding.btnReset -> {
+                refresh()
             }
         }
     }
@@ -53,5 +68,13 @@ class MainActivity : AppCompatActivity() {
             binding.tvTimeMin.text = "${minute}"
 
         }
+    }
+
+    private fun pause() {
+
+    }
+
+    private fun refresh() {
+        
     }
 }
