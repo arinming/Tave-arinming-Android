@@ -81,6 +81,6 @@ class MainActivity : AppCompatActivity() {
         time = 0
         binding.tvTimeMil.text = ".00"
         binding.tvTimeSec.text = ":00"
-        binding.tvTimeMin.text = "00"
+        binding.tvTimeMin.text = "0"
     }
 }
