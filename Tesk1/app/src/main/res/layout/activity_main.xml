@@ -16,12 +16,33 @@
         tools:ignore="M,MissingConstraints">
 
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/tv_time_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="time"
-            android:text="00:00:00"
-            android:textSize="100px" />
+            android:text="00"
+            android:textSize="100px"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_time_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:text=":00"
+            android:textSize="100px"
+            app:layout_constraintStart_toEndOf="@+id/tv_time_min" />
+
+
+        <TextView
+            android:id="@+id/tv_time_mil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:text=".00"
+            android:textSize="100px"
+            app:layout_constraintStart_toEndOf="@+id/tv_time_sec" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
