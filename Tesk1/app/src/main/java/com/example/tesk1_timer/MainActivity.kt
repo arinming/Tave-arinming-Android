@@ -70,6 +70,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun refresh() {
+        timer?.cancel() // 백그라운드 타이머 멈추기
 
+        binding.btnStart.text = "시작"
+
+        isRunning = false   // 멈춤 상태로 변경
+
+        // 타이머 초기화
+
+        time = 0
+        binding.tvTimeMil.text = ".00"
+        binding.tvTimeSec.text = ":00"
+        binding.tvTimeMin.text = "00"
     }
 }
