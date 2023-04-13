@@ -7,7 +7,7 @@ import com.example.tesk1_timer.databinding.ActivityMainBinding
 import java.util.Timer
 import kotlin.concurrent.timer
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var isRunning = false   // 실행 여부 확인용 변수
     var timer: Timer? = null
@@ -20,26 +20,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(view)
 
         binding.btnStart.setOnClickListener {
-            if (binding.btnStart.text == "시작") {
-                binding.btnStart.text = "일시정지"
+            if (isRunning) {
+                pause()
             } else {
-                binding.btnStart.text = "시작"
+                start()
             }
         }
-    }
 
-    override fun onClick(v: View?) {
-        when(binding.root) {
-            binding.btnStart -> {
-                if (isRunning) {
-                    pause()
-                } else {
-                    start()
-                }
-            }
-            binding.btnReset -> {
-                refresh()
-            }
+        binding.btnReset.setOnClickListener {
+            refresh()
         }
     }
 
@@ -56,17 +45,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val second = (time % 6000) / 100
             val minute = time / 6000
 
-            // 밀리초
-            binding.tvTimeMil.text = if (milli_second < 10) ".0${milli_second}"
-            else ".${milli_second}"
+            runOnUiThread { // UI 스레드 생성
+                if (isRunning) {    // UI 업데이트 조건 설정
+                    // 밀리초
+                    binding.tvTimeMil.text = if (milli_second < 10) ".0${milli_second}"
+                    else ".${milli_second}"
 
-            // 초
-            binding.tvTimeSec.text = if (second < 10) ":0${second}"
-            else ":${second}"
+                    // 초
+                    binding.tvTimeSec.text = if (second < 10) ":0${second}"
+                    else ":${second}"
 
-            // 분
-            binding.tvTimeMin.text = "${minute}"
-
+                    // 분
+                    binding.tvTimeMin.text = "${minute}"
+                }
+            }
         }
     }
 
@@ -75,6 +67,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun refresh() {
-        
+
     }
 }
