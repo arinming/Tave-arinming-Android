@@ -1,0 +1,41 @@
+
+CREATE TABLE Student (
+  `ST_ID` INT NOT NULL AUTO_INCREMENT,
+  `ST_NAME` VARCHAR(20) NOT NULL,
+  `HIRE_YMD` DATE NOT NULL,
+  `TL_CODE` INT NOT NULL,
+  PRIMARY KEY (`ST_ID`))
+ENGINE = InnoDB;
+
+
+CREATE TABLE team_leader (
+  `TL_CODE` INT NOT NULL,
+  `TL_NAME` VARCHAR(20) NOT NULL,
+  `HIRE_YMD` DATE NOT NULL,
+  PRIMARY KEY (`TL_CODE`))
+ENGINE = InnoDB;
+
+
+
+
+인덱스 추가
+insert into Student values(1, 'kangyuri1114', '2023-03-18', 101)
+insert into Student values(2, 'seogaeun', '2023-03-18', 101)
+insert into Student values(3, 'sxmvx', '2023-03-18', 102)
+insert into Student values(4, 'arinming', '2023-03-18', 102)
+
+insert into TEAM_LEADER values(101, 'KanuKim97', '2023-03-18')
+insert into Student values(102, 'Luna828', '2023-03-18')
+
+
+
+외래키 지정
+alter table student add foreign key(TL_CODE) references team_leader(TL_CODE);
+
+
+JOIN을 이용하여 출력
+
+select A.TL_CODE, A.TL_name, B.ST_NAME
+from team_leader A left outer join student B
+On A.TL_CODE = B.TL_CODE
+order by A.TL_CODE ASC;
