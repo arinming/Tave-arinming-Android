@@ -2,6 +2,7 @@ package com.example.tesk1_timer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.tesk1_timer.databinding.ActivityMainBinding
 import java.util.Timer
 import kotlin.concurrent.timer
@@ -58,7 +59,14 @@ class MainActivity : AppCompatActivity() {
 
                     // 분
                     binding.tvTimeMin.text = "${minute}"
+
+                    // 99:59.99 일때 실행 정지를 알리는 Toast 메시지 띄우기
+                    if (minute == 99 && second == 59 && milli_second == 99) {
+                        Toast.makeText(applicationContext, "실행 정지", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
+
             }
         }
     }
