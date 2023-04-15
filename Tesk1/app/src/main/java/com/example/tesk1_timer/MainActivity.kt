@@ -2,7 +2,6 @@ package com.example.tesk1_timer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.tesk1_timer.databinding.ActivityMainBinding
 import java.util.Timer
 import kotlin.concurrent.timer
@@ -46,6 +45,8 @@ class MainActivity : AppCompatActivity() {
             val minute = time / 6000
 
             runOnUiThread { // UI 스레드 생성
+                // runOnUiThread : 메인 Thread 위에서 실행 시키겠다
+                // 구조 -> if(Thread.currentThread() != mUIThread)
                 if (isRunning) {    // UI 업데이트 조건 설정
                     // 밀리초
                     binding.tvTimeMil.text = if (milli_second < 10) ".0${milli_second}"
