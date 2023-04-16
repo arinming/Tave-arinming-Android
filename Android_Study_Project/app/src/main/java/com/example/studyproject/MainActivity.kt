@@ -72,6 +72,36 @@ class MainActivity : AppCompatActivity() {
         // 부정연산자 : 단항 연산자 !
         var logic3 = !result1
         Log.d("compare", "논리연산 ! 결과 = ${logic3}")
+
+
+        // if
+
+        var out = 0
+        var strike = 2
+        if (strike > 2) {   // strike가 2보다 크면 out 증가
+            out = out +1
+        }
+        Log.d("if", "결과 out = ${out}")
+
+
+        var month = 10
+        if (month > 9) {
+            process1()
+        } else if(month in 7..8) {
+            process2()
+        } else {
+            process3()
+        }
+    }
+
+    fun process1() {
+        Log.d("if", "가을 옷을 입습니다.")
+    }
+    fun process2() {
+        Log.d("if", "해수욕장을 갑니다.")
+    }
+    fun process3() {
+        Log.d("if", "집에 있습니다.")
     }
 }
 
