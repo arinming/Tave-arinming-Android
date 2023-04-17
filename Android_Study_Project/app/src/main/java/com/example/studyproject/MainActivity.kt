@@ -92,6 +92,27 @@ class MainActivity : AppCompatActivity() {
         } else {
             process3()
         }
+
+
+        // when : 다른 언어에서 switch
+        // 코틀린 when : if문의 확장판
+        when(month) {
+            9 -> {  // month 값이 9월일 때 실행
+                process1()
+            }
+            10 -> Log.d("when", "10월입니다.")  // 실행할 내용이 한 줄이면 코드블럭 생략 가능
+            1, 2, 3 -> {    // 여러 경우 지정 가능
+                process3()
+            }
+            in 6..8 -> { // 값을 특정하지 않고 범위를 지정할 때
+                process2()
+            }
+            else -> {   // else도 쓸 수 있다
+                Log.d("when", "잘못 입력했습니다.")
+            }
+        }
+        // if문과 거의 동일하다, when이 더 눈에 잘 들어옴
+
     }
 
     fun process1() {
@@ -103,6 +124,8 @@ class MainActivity : AppCompatActivity() {
     fun process3() {
         Log.d("if", "집에 있습니다.")
     }
+
+
 }
 
 
