@@ -1,5 +1,4 @@
 package DiMo
-
 // 클래스 : '값'과 그 값을 사용하는 '기능'들을 묶어놓은 것
 // 클래스는 고유의 특징적인 값을 담는 변수인 속성 + 기능을 구현한 함수 로 이루어져 있다
 // '인스턴스'를 만드는 틀이다
@@ -26,7 +25,7 @@ fun main() {
 
 // 괄호 안에 클래스가 가지는 속성으로 이름과 출생년도를 쉼표로 구분하여 나열
 // 박보영, 전정국, 장원영 : 3개의 인스턴스를 1개의 Person 클래스로 만들 수 있다
-class Person(var name: String, val birthYear: Int) { // 함수 없이 속성만 갖춘 클래스는 이것 만으로 구현할 수 있다
+class Person (var name: String, val birthYear: Int) { // 함수 없이 속성만 갖춘 클래스는 이것 만으로 구현할 수 있다
     fun introduce() {
         // 클래스 내부에서는 변수명.속성명이 아닌 속성이름만 사용한다
         println("안녕하세요, ${birthYear}년생 ${name}입니다.")
